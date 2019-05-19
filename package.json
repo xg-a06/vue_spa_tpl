@@ -1,7 +1,7 @@
 {
-  "name": "vue_spa",
-  "version": "1.0.0",
-  "description": "vue spa tpl",
+  "name": "{{projectName}}",
+  "version": "{{projectVersion}}",
+  "description": "{{projectDescription}}",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=local BUILD_ENV=local webpack-dev-server --config build/webpack.common.conf.js",
@@ -13,8 +13,8 @@
     "lint:fix": "eslint --fix --ext .js --ext .jsx --ext .vue src/",
     "server": "a06-server kill all && a06-server start -r ./dist -z -c"
   },
-  "author": "xg_jser@163.com",
-  "license": "ISC",
+  "author": "",
+  "license": "",
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
