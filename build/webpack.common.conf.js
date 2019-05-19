@@ -40,7 +40,7 @@ const baseConfig = {
     }
   },
   module: {
-    rules: getLoaders(process.env.NODE_ENV, '{{css}}')
+    rules: getLoaders(process.env.NODE_ENV, '<%=css%>')
   },
   plugins: getPlugins(process.env.NODE_ENV)
 }
