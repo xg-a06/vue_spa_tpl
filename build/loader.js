@@ -72,7 +72,7 @@ function getCssLoaders (env, cssPreprocessor) {
 
   const cssInclude = [resolve('src')]
   if (isLocal) {
-    cssInclude.push(/[\\/]node_modules[\\/]_element-ui@[\d\.]+/)
+    cssInclude.push(resolve('node_modules/element-ui'))
   }
   const loaders = [
     {
