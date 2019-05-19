@@ -9,7 +9,7 @@ const presets = [
 ]
 const plugins = [
   ['@babel/plugin-transform-runtime', { corejs: 2 }],
-  {{#if es6Env==='STAGE1'}}
+  {{if es6Env==='STAGE1'}}
   '@babel/plugin-proposal-export-default-from', // Stage 1
   '@babel/plugin-proposal-logical-assignment-operators',
   ['@babel/plugin-proposal-optional-chaining', { loose: false }],

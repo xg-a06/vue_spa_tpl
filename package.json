@@ -17,7 +17,7 @@
   "license": "",
   "devDependencies": {
     "@babel/core": "^7.4.4",
-    {{#if es6Env==='STAGE1'}}
+    {{if es6Env==='STAGE1'}}
     "@babel/plugin-proposal-export-default-from": "^7.2.0",
     "@babel/plugin-proposal-logical-assignment-operators": "^7.2.0",
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
