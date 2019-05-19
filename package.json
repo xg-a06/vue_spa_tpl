@@ -19,7 +19,7 @@
   "license": "",
   "devDependencies": {
     "@babel/core": "^7.4.4",
-    <% if(es6Env==='STAGE1'){ %>
+    <% if(es6Env==='stage1'){ %>
     "@babel/plugin-proposal-export-default-from": "^7.2.0",
     "@babel/plugin-proposal-logical-assignment-operators": "^7.2.0",
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
@@ -36,7 +36,7 @@
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-proposal-json-strings": "^7.2.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
-    <% }else if(es6Env==='STAGE2'){%>
+    <% }else if(es6Env==='stage2'){%>
     "@babel/plugin-proposal-decorators": "^7.4.4",
     "@babel/plugin-proposal-function-sent": "^7.2.0",
     "@babel/plugin-proposal-export-namespace-from": "^7.2.0",

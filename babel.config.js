@@ -9,7 +9,7 @@ const presets = [
 ]
 const plugins = [
   ['@babel/plugin-transform-runtime', { corejs: 2 }],
-  <% if(es6Env==='STAGE1'){ %>
+  <% if(es6Env==='stage1'){ %>
   '@babel/plugin-proposal-export-default-from', // Stage 1
   '@babel/plugin-proposal-logical-assignment-operators',
   ['@babel/plugin-proposal-optional-chaining', { loose: false }],
@@ -26,7 +26,7 @@ const plugins = [
   ['@babel/plugin-proposal-class-properties', { loose: false }],
   '@babel/plugin-proposal-json-strings',
   '@babel/plugin-proposal-object-rest-spread',
-  <% }else if(es6Env==='STAGE2'){%>
+  <% }else if(es6Env==='stage2'){%>
   ['@babel/plugin-proposal-decorators', { legacy: true }], // Stage 2
   '@babel/plugin-proposal-function-sent',
   '@babel/plugin-proposal-export-namespace-from',
