@@ -1,10 +1,10 @@
 import Vue from 'vue'
-<% if(vuex){ %>
+<% if(vuex){ -%>
 import store from './store'
-<% } %>
-<% if(vueRouter){ %>
+<% } -%>
+<% if(vueRouter){ -%>
 import router from './routes'
-<% } %>
+<% } -%>
 import App from './App.vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -19,11 +19,11 @@ Vue.config.errorHandler = function (err, vm, info) {
 
 new Vue({
   el: '#app',
-  <% if(vueRouter){ %>
+  <% if(vueRouter){ -%>
   router,
-  <% } %>
-  <% if(vuex){ %>
+  <% } -%>
+  <% if(vuex){ -%>
   store,
-  <% } %>
+  <% } -%>
   render: h => h(App)
 })
