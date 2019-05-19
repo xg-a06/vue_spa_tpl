@@ -70,9 +70,9 @@ function getCssLoaders (env, cssPreprocessor) {
   let sourceMap = !isProd
   let lastLoader = isLocal ? 'vue-style-loader' : MiniCssExtractPlugin.loader
 
-  const cssInclude = [resolve('src')]
+  const cssInclude = [/src/]
   if (isLocal) {
-    cssInclude.push(resolve('node_modules/element-ui'))
+    cssInclude.push(/node_modules/)
   }
   const loaders = [
     {
