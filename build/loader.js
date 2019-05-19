@@ -9,7 +9,7 @@ function resolve (dir) {
 function subDir (dir) {
   return path.posix.join(config[process.env.BUILD_ENV].SUB_DIR, dir)
 }
-
+<% if(esLint){ %>
 const lintLoader = {
   test: /\.(vue|js|jsx)$/,
   use: {
@@ -21,7 +21,7 @@ const lintLoader = {
   include: [resolve('src')],
   enforce: 'pre'
 }
-
+<%}%>
 function getCommonLoaders () {
   return [
     {
@@ -124,9 +124,11 @@ module.exports = function (env, cssPreprocessor) {
   const commonLoaders = getCommonLoaders()
   const cssLoaders = getCssLoaders(env, cssPreprocessor)
   const loaders = []
+  <% if(esLint){ %>
   if (env === 'local') {
     loaders.push(lintLoader)
   }
+  <%}%>
   Array.prototype.push.apply(loaders, [...commonLoaders, ...cssLoaders])
   return loaders
 }

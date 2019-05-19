@@ -1,6 +1,7 @@
 <template>
   <div>
     i am test2 page
+    <% if(vuex){ %>
     <div>
       <p>{{ $store.state.num }}</p>
       <div>
@@ -8,6 +9,7 @@
         <button @click="$store.dispatch('addNumAsync',{num:2})">+ async</button>
       </div>
     </div>
+    <%}%>
   </div>
 </template>
 
