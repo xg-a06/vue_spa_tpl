@@ -19,11 +19,7 @@ Vue.config.errorHandler = function (err, vm, info) {
 
 new Vue({
   el: '#app',
-  <% if(vueRouter){ -%>
-  router,
-  <% } -%>
-  <% if(vuex){ -%>
-  store,
-  <% } -%>
+  <% if(vueRouter){%>router,<% } %>
+  <% if(vuex){%>store,<% } %>
   render: h => h(App)
 })
