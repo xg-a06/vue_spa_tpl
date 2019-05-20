@@ -86,7 +86,6 @@ module.exports = () => {
         },
         minimizer: [
           new ParallelUglifyPlugin({
-            cacheDir: '.cache/',
             include: [/[\\/]src[\\/]/],
             uglifyJS: {
               output: {
