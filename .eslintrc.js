@@ -30,8 +30,6 @@ module.exports = {
     'object-curly-spacing': 'off'
   },
   globals: {
-    Vhall: true,
-    VhallInteraction: true,
-    VhallInteractionGuest: true
+
   }
 }
