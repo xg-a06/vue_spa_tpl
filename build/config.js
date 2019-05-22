@@ -10,7 +10,7 @@ const config = {
     hotOnly: true,
     overlay: {
       errors: true,
-      warnings: true
+      warnings: false
     },
     historyApiFallback: true,
     proxy: {
