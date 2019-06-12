@@ -24,17 +24,17 @@ const devConfig = merge(baseConfig, {
 })
 
 <% if(esLint){ -%>
-  devConfig.module.rules.unshift({
-    test: /\.(vue|js|jsx)$/,
-    use: {
-      loader: 'eslint-loader',
-      options: {
-        formatter: require('eslint-friendly-formatter')
-      }
-    },
-    include: [resolve('src')],
-    enforce: 'pre'
-  })
+devConfig.module.rules.unshift({
+  test: /\.(vue|js|jsx)$/,
+  use: {
+    loader: 'eslint-loader',
+    options: {
+      formatter: require('eslint-friendly-formatter')
+    }
+  },
+  include: [resolve('src')],
+  enforce: 'pre'
+})
 <%} -%>
 
 module.exports = devConfig

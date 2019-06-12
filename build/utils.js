@@ -33,8 +33,7 @@ function getCssLoaders () {
       ],
       include: cssInclude
     }
-    <% if(css === 'sass'){ -%>
-      ,{
+    <% if(css === 'sass'){ -%>,{
         test: /\.scss$/,
         use: [
           { loader: lastLoader, options: { sourceMap: sourceMap } },
@@ -48,8 +47,7 @@ function getCssLoaders () {
         include: resolve('src')
       }
     <%} -%>
-    <% if(css === 'less'){ -%>
-      ,{
+    <% if(css === 'less'){ -%>,{
         test: /\.less$/,
         use: [
           { loader: lastLoader, options: { sourceMap: sourceMap } },
