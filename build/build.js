@@ -1,12 +1,12 @@
 const webpack = require('webpack')
 const chalk = require('chalk')
-const config = require('./webpack.common.conf')
+const buildConfig = require('./webpack.prod.conf')
 
 console.log(`NODE_ENV      ${chalk.green(process.env.NODE_ENV)}`)
 console.log(`BUILD_ENV     ${chalk.green(process.env.BUILD_ENV)}`)
 console.log(`start building......`)
 
-webpack(config(), (err, stats) => {
+webpack(buildConfig, (err, stats) => {
   if (err) throw err
   process.stdout.write(
     stats.toString({
