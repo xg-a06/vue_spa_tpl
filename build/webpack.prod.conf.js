@@ -1,10 +1,3 @@
-/*
- * @Description:
- * @Author: xg-a06
- * @Date: 2019-06-12 16:39:47
- * @LastEditTime: 2019-06-12 17:13:25
- * @LastEditors: xg-a06
- */
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
