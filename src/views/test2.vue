@@ -3,10 +3,10 @@
     i am test2 page
     <% if(vuex){ -%>
     <div>
-      <p>{{ $store.state.num }}</p>
+      <p>{{ num }}</p>
       <div>
-        <button @click="$store.commit('addNum',{num:1})">+ sync</button>
-        <button @click="$store.dispatch('addNumAsync',{num:2})">+ async</button>
+        <button @click="commit({num:1})">+ sync</button>
+        <button @click="dispatch({num:2})">+ async</button>
       </div>
     </div>
     <%} -%>
@@ -14,7 +14,29 @@
 </template>
 
 <script>
-export default {}
+import { toRefs } from 'vue';
+import { useStore } from 'vuex';
+export default {
+  name: 'Test2',
+  <% if(vuex){ -%>
+  setup() {
+    const store = useStore();
+    const { num } = toRefs(store.state);
+
+    const commit = (data) => {
+      store.commit('addNum', data);
+    };
+    const dispatch = (data) => {
+      store.dispatch('addNumAsync', data);
+    };
+    return {
+      num,
+      commit,
+      dispatch,
+    };
+  },
+  <%} -%>
+};
 </script>
 
 <style>

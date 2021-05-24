@@ -1,30 +1,28 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { createStore } from 'vuex';
 
-Vue.use(Vuex)
+const isDev = process.env.NODE_ENV !== 'production';
 
-const isDev = process.env.NODE_ENV !== 'production'
-
-const store = new Vuex.Store({
+const store = createStore({
   strict: isDev,
   state: {
-    num: 3
+    num: 3,
   },
   getters: {
-    isEven: state => state.num % 2 === 0
+    isEven: (state) => state.num % 2 === 0,
   },
   mutations: {
-    addNum (state, data) {
-      state.num += data.num
-    }
+    addNum(state, data) {
+      state.num += data.num;
+    },
   },
   actions: {
-    addNumAsync ({ commit }, data) {
+    addNumAsync({ commit }, data) {
       setTimeout(() => {
-        commit('addNum', data)
-      }, 2000)
-    }
-  }
-})
+        commit('addNum', data);
+      }, 2000);
+    },
+  },
+  modules: {},
+});
 
-export default store
+export default store;

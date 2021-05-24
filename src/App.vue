@@ -1,6 +1,6 @@
 <template>
   <div class="app-container ">
-    <img src='@assets/logo.png'>
+    <img src='./assets/logo.png'>
     <h1>Hello Vue!</h1>
     <p>
       <router-link to="/test1">Go to Test1</router-link>
@@ -12,10 +12,10 @@
 
 <script>
 export default {
-  data () {
-    return {}
-  }
-}
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style scoped >

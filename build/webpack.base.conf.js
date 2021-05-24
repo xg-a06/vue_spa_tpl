@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const { VueLoaderPlugin } = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const threadLoader = require('thread-loader');
 const config = require('./config');
@@ -19,7 +19,7 @@ const baseConfig = {
   mode: isProd ? 'production' : 'development',
   devtool: isProd ? false : 'inline-source-map',
   entry: {
-    main: resolve('src/index.js')
+    main: resolve('src/main.js')
   },
   output: {
     filename: '[name].js',
@@ -99,9 +99,10 @@ const baseConfig = {
       minify: true
     }),
     new webpack.DefinePlugin({
+      __VUE_OPTIONS_API__: false,
+      __VUE_PROD_DEVTOOLS__: false,
       'process.env': {
         BUILD_ENV: JSON.stringify(process.env.BUILD_ENV),
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         API_PATH: JSON.stringify(config[process.env.BUILD_ENV].API_PATH),
         SUB_DIR: JSON.stringify(config[process.env.BUILD_ENV].SUB_DIR),
         PUBLIC_PATH: JSON.stringify(config[process.env.BUILD_ENV].PUBLIC_PATH)

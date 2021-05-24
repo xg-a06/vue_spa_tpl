@@ -16,23 +16,18 @@ function getCssLoaders () {
   let isProd = env === 'production'
   let sourceMap = !isProd
   let lastLoader = isLocal ? 'vue-style-loader' : MiniCssExtractPlugin.loader
-  const cssInclude = [/src/]
-  if (isLocal) {
-    cssInclude.push(/node_modules/)
-  }
   const loaders = [
     {
       test: /\.css$/,
       use: [
-        { loader: lastLoader, options: { sourceMap: sourceMap } },
+        { loader: lastLoader },
         {
           loader: 'css-loader',
-          options: { sourceMap: sourceMap, importLoaders: 1 }
+          options: { sourceMap: sourceMap },
         },
-        { loader: 'postcss-loader', options: { sourceMap: sourceMap } }
       ],
-      include: cssInclude
-    }
+      include: [resolve('src'), resolve('node_modules')],
+    },
     <% if(css === 'sass'){ -%>,{
         test: /\.scss$/,
         use: [

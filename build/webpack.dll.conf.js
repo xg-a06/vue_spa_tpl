@@ -60,7 +60,7 @@
 //           },
 //         },
 //       }),
-//       // new OptimizeCssAssetsPlugin({
+//       // new CssMinimizerPlugin({
 //       //   cssProcessor: cssnano,
 //       //   cssProcessorOptions: {
 //       //     discardComments: { safe: true,removeAll: true }

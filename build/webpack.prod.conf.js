@@ -6,7 +6,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const cssnano = require('cssnano')
 const chalk = require('chalk')
@@ -57,11 +57,10 @@ const buildConfig = merge(baseConfig, {
           priority: 10,
         },
         ui: {
-          name: 'ui', // 单独将 elementUI 拆包
-          test: /[\\/]node_modules[\\/]_element-plus@[\d\.]+/,
+          name: 'ui',
+          test: /[\\/]node_modules[\\/]element-plus/,
           chunks: 'all',
           priority: 20
-             reuseExistingChunk: true,
         }
       },
     },
@@ -70,6 +69,7 @@ const buildConfig = merge(baseConfig, {
     },
     minimizer: [
       new TerserPlugin({
+        extractComments: false,
         terserOptions: {
           parse: {
             ecma: 8,
@@ -91,13 +91,7 @@ const buildConfig = merge(baseConfig, {
         },
         parallel: true,
       }),
-      new OptimizeCssAssetsPlugin({
-        cssProcessor: cssnano,
-        cssProcessorOptions: {
-          discardComments: { removeAll: true },
-        },
-        canPrint: true,
-      }),
+      new CssMinimizerPlugin(),
     ],
   },
   module: {
