@@ -1,19 +1,25 @@
-const webpack = require('webpack')
+const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const HappyPack = require('happypack')
-const os = require('os')
-const config = require('./config')
-const { resolve, subDir } = require('./utils')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const threadLoader = require('thread-loader');
+const config = require('./config');
+const { resolve, subDir } = require('./utils');
+
+threadLoader.warmup(
+  {
+    workers: 4,
+  },
+  ['babel-loader', '@babel/preset-env', 'less-loader']
+);
 
 const isProd = process.env.NODE_ENV === 'production'
 
 const baseConfig = {
   target: 'web',
   mode: isProd ? 'production' : 'development',
-  devtool: isProd ? '' : 'cheap-module-eval-source-map',
+  devtool: isProd ? false : 'inline-source-map',
   entry: {
-    main: resolve('src/main.js')
+    main: resolve('src/index.js')
   },
   output: {
     filename: '[name].js',
@@ -24,24 +30,37 @@ const baseConfig = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       '@': resolve('src'),
-      '@components': resolve('src/components'),
-      '@assets': resolve('src/assets'),
-      '@components': resolve('src/components'),
-      '@routes': resolve('src/routes'),
-      '@store': resolve('src/store')
     }
   },
   module: {
     rules: [
       {
-        test: /\.vue$/,
-        use: 'vue-loader',
-        include: resolve('src')
+        test: /\.vue?$/,
+        include: resolve('src'),
+        use: [
+          {
+            loader: 'thread-loader',
+            options: {
+              workers: 4,
+            },
+          },
+          'cache-loader',
+          'vue-loader',
+        ],
       },
       {
         test: /\.js[x]?$/,
-        loader: 'happypack/loader?id=happy-babel',
-        include: resolve('src')
+        include: resolve('src'),
+        use: [
+          {
+            loader: 'thread-loader',
+            options: {
+              workers: 4,
+            },
+          },
+          'cache-loader',
+          'babel-loader?cacheDirectory=true',
+        ],
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
@@ -78,19 +97,6 @@ const baseConfig = {
       template: resolve('index.html'),
       filename: 'index.html',
       minify: true
-    }),
-    new HappyPack({
-      id: 'happy-babel',
-      loaders: [
-        {
-          loader: 'babel-loader',
-          options: {
-            babelrc: true,
-            cacheDirectory: true // 启用缓存
-          }
-        }
-      ],
-      threadPool: HappyPack.ThreadPool({ size: os.cpus().length })
     }),
     new webpack.DefinePlugin({
       'process.env': {

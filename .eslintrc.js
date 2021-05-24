@@ -1,38 +1,33 @@
-// https://eslint.org/docs/user-guide/configuring
+const path = require('path');
 
 module.exports = {
-  root: true,
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module'
-  },
-  parser: 'babel-eslint',
   env: {
     browser: true,
-    es6: true
+    es6: true,
   },
-  extends: [
-    // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-    // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-    'plugin:vue/essential',
-    // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-    'standard'
-  ],
-  // required to lint *.vue files
+  extends: ['plugin:vue/essential','airbnb', 'prettier'],
+  parser: 'babel-eslint',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 2018,
+    sourceType: 'module',
+  },
   plugins: ['vue'],
-  // add your custom rules here
-  rules: {
-    'no-extend-native': 'off',
-    'no-new': 'off',
-    'no-eval': 'off',
-    'no-alert': 'off',
-    'no-spaced-func': 'off',
-    'no-var': 'off',
-    'no-debugger': 'off',
-    'no-useless-constructor': 'off',
-    'object-curly-spacing': 'off'
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [['@', path.resolve('./src')]],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+      },
+    },
   },
-  globals: {
-
-  }
-}
+  globals: {},
+  rules: {
+    'import/no-extraneous-dependencies': 0,
+    'no-param-reassign': 0,
+    'no-underscore-dangle': 0,
+    'react/prop-types': 0,
+  },
+};

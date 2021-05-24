@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 
 const config = {
   buildDetail: false,
@@ -7,10 +7,9 @@ const config = {
     port: 2333,
     open: true,
     hot: true,
-    hotOnly: true,
     overlay: {
       errors: true,
-      warnings: false
+      warnings: false,
     },
     historyApiFallback: true,
     proxy: {
@@ -18,30 +17,30 @@ const config = {
         target: 'http://xxx.com',
         changeOrigin: true,
         pathRewrite: {
-          '^/xxx': '/'
-        }
-      }
-    }
+          '^/xxx': '/',
+        },
+      },
+    },
   },
   local: {
     API_PATH: '/api',
     SUB_DIR: 'static',
-    PUBLIC_PATH: '/'
+    PUBLIC_PATH: '/',
   },
   dev: {
     API_PATH: '/api',
     SUB_DIR: 'static',
-    PUBLIC_PATH: '/'
+    PUBLIC_PATH: '/',
   },
   test: {
     API_PATH: '/api',
     SUB_DIR: 'static',
-    PUBLIC_PATH: '/'
+    PUBLIC_PATH: '/',
   },
   prod: {
     API_PATH: '/api',
     SUB_DIR: 'static',
-    PUBLIC_PATH: '/'
-  }
-}
-module.exports = config
+    PUBLIC_PATH: '/',
+  },
+};
+module.exports = config;

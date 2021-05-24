@@ -1,6 +1,7 @@
 const webpack = require('webpack')
+const friendlyFormatter = require('eslint-friendly-formatter');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge');
 const config = require('./config')
 const { resolve } = require('./utils')
 const baseConfig = require('./webpack.base.conf')
@@ -13,28 +14,30 @@ const devConfig = merge(baseConfig, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new CopyWebpackPlugin([
-      {
-        from: resolve('src/static'),
-        to: resolve(`dist/${config[process.env.BUILD_ENV].SUB_DIR}`),
-        ignore: ['.*']
-      }
-    ])
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: resolve('src/static'),
+          to: resolve(`dist/${config[process.env.BUILD_ENV].SUB_DIR}`),
+        },
+      ],
+    })
   ]
 })
 
 <% if(esLint){ -%>
-devConfig.module.rules.unshift({
-  test: /\.(vue|js|jsx)$/,
-  use: {
-    loader: 'eslint-loader',
-    options: {
-      formatter: require('eslint-friendly-formatter')
-    }
-  },
-  include: [resolve('src')],
-  enforce: 'pre'
-})
+  devConfig.module.rules.unshift({
+    test: /\.(js|jsx)$/,
+    use: {
+      loader: 'eslint-loader',
+      options: {
+        formatter: friendlyFormatter,
+      },
+    },
+    include: [resolve('src')],
+    exclude: [resolve('src/assets')],
+    enforce: 'pre',
+  })
 <%} -%>
 
 module.exports = devConfig
