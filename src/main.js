@@ -5,7 +5,7 @@ import router from './router'
 <% if(vuex){ -%>
 import store from './store'
 <% } -%>
-import App from './App.vue'
+import App from './App'
 import { importUI } from './ui';
 
 

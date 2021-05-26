@@ -27,7 +27,7 @@ function getCssLoaders () {
         },
       ],
       include: [resolve('src'), resolve('node_modules')],
-    },
+    }
     <% if(css === 'sass'){ -%>,{
         test: /\.scss$/,
         use: [

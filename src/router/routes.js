@@ -1,5 +1,5 @@
-const Test1 = () => import(/* webpackChunkName: "test1" */ '@/views/Test1');
-const Test2 = () => import(/* webpackChunkName: "test2" */ '@/views/Test2');
+const Test1 = () => import(/* webpackChunkName: "test1" */ '@/views/Test1.vue');
+const Test2 = () => import(/* webpackChunkName: "test2" */ '@/views/Test2.vue');
 
 export default [
   {
