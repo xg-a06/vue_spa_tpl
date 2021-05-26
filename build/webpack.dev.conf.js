@@ -15,7 +15,7 @@ const devConfig = merge(baseConfig, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    <% if(esLint){ -%>new ESLintPlugin()<%} -%>
+    <% if(esLint){ -%>new ESLintPlugin(),<%} -%>
     new CopyWebpackPlugin({
       patterns: [
         {
